@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 import Posts from "../Blog/Posts/Posts";
-import FullPost from "./FullPost/FullPost";
+//import FullPost from "./FullPost/FullPost";
 import NewPost from "./NewPost/NewPost";
 import "./Blog.css";
 
@@ -13,8 +13,8 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <NavLink to="/" exact>
-                  Home
+                <NavLink to="/posts" exact>
+                  Posts
                 </NavLink>
               </li>
               <li>
@@ -26,10 +26,11 @@ class Blog extends Component {
 
         {/* This switch element is used to load one Route at a time */}
         <Switch>
-          <Route path="/" exact component={Posts} />
+          
           {/* Order matters here because if we use the :id route first, 'new-post' will be interpreted as an id as well when it is not, casuing errors in the app */}
           <Route path="/new-post" component={NewPost} /> 
-          <Route path="/:id" exact component={FullPost} />
+          <Route path="/posts" component={Posts} />
+          {/* <Route path="/:id" exact component={FullPost} /> */}
         </Switch>
       </div>
     );
